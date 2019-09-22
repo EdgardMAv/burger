@@ -32,7 +32,7 @@ var orm = {
             cb(result);
         });
     },
-    updateOne: (table, objColVals, condition, cb) =>{
+    updateOne: (objColVals, condition, cb) =>{
         let queryString = "UPDATE" + table + "SET" + objToSql(objColVals) + "WHERE" + condition + ";";
 
         connection.query(queryString, (err, result) =>{
