@@ -2,13 +2,13 @@ const mysql = require("mysql");
 
 const connection = mysql.createConnection({
     host: "localhost",
-    port: 3000,
+    port: 3306,
     user: "root",
-    password: "",
-    database: "burgersdb"
+    password: "password",
+    database: "burgers_db"
 });
 
-connection.connect((err) =>{
+connection.connect(function(err){
     if (err){
         console.error("erro connecting: " + err.stack);
         return;

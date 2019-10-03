@@ -17,7 +17,7 @@ function objToSql(ob) {
 
 var orm = {
     selectAll:(tableInput, cb) =>{
-        const queryString = "SELECT * FROM" + tableInput + ";";
+        const queryString = "SELECT * FROM " + tableInput + ";";
         connection.query(queryString, (err, result) =>{
             if (err) throw err;
             cb(result);
@@ -36,6 +36,12 @@ var orm = {
         let queryString = "UPDATE" + table + "SET" + objToSql(objColVals) + "WHERE" + condition + ";";
 
         connection.query(queryString, (err, result) =>{
+            if(err) throw err;
+            cb(result);
+        });
+        console.log(queryString);
+
+        connection.query(queryString, vals, (err, result) =>{
             if(err) throw err;
             cb(result);
         });
